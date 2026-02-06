@@ -1,21 +1,35 @@
-<app-header></app-header>
+<app-header> </app-header>
 
 <h1>Welcome to My Task Manager App!</h1>
 <p>Let's start learning Angular</p>
 
 <app-task-card
-taskname ="Learn Angular"
-(taskclicked)="OnTaskClicked($event)">
+taskName ="Learn Angular"
+(taskClicked)="onTaskClicked($event)">
 </app-task-card>
 
 <app-task-card
-taskname = "Building Project"
-(taskclicked)="OnTaskClicked($event)">
+taskName = "Building Project"
+(taskClicked)="onTaskClicked($event)">
 </app-task-card>
 
 <app-task-card
-taskname="Prepare Interview"
-(taskclicked)="OnTaskClicked($event)">
+taskName="Prepare Interview"
+(taskClicked)="onTaskClicked($event)">
 </app-task-card>
+
+<button (click)="toggleTasks()"> Hide Tasks</button>
+
+<p *ngIf="tasks.length === 0">No Tasks yet</p>
+<div *ngIf="showTasks">
+    <app-task-card
+    *ngFor="let task of tasks; let i = index"
+    [taskName]="task"
+    [isHighlight]="i === 0"
+    (taskClicked)="onTaskClicked($event)">
+
+    </app-task-card>
+
+</div>
 
 <app-footer></app-footer>

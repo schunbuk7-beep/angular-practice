@@ -1,3 +1,6 @@
-<div (click)="onclick()" style="cursor: pointer; border: 1px solid #ccc; padding: 10px;">
-{{taskname}}
+<div 
+(click)="onclick()" 
+[ngClass]="{highlight: isHighlight}" 
+ style="cursor:pointer; padding:10px; margin:5px; border:1px solid #ccc;">
+{{taskName}}
 </div>
