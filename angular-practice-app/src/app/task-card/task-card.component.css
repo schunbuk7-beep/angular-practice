@@ -1,4 +1,21 @@
+.task-card{
+    padding: 12px;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+}
+
+/* Hover Effect */
+.task-card:hover {
+    background-color: #e0e7ff;
+    transform:scale(1.02);
+    
+}
+
 .highlight{
-    background-color: #e0f2ff;
+    background-color: #c7d2fe;
     font-weight : bold;
 }

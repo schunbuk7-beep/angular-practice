@@ -18,7 +18,7 @@ taskName="Prepare Interview"
 (taskClicked)="onTaskClicked($event)">
 </app-task-card>
 
-<button (click)="toggleTasks()"> Hide Tasks</button>
+<button (click)="toogleTasks()"> Hide Tasks</button>
 
 <p *ngIf="tasks.length === 0">No Tasks yet</p>
 <div *ngIf="showTasks">
@@ -31,5 +31,7 @@ taskName="Prepare Interview"
     </app-task-card>
 
 </div>
+
+<app-add-task></app-add-task> 
 
 <app-footer></app-footer>

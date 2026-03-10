@@ -1,0 +1,23 @@
+<div>
+    <h2>Add New Task</h2>
+
+    <div *ngIf="showAlert">
+            ✅ Task added successfully!
+    </div>
+    <form #taskform="ngForm" (ngSubmit)="onSubmit()">
+        <label>Task Title:</label><br>
+        <input
+        type="next"
+        name="taskTitle"
+        [(ngModel)]="taskTitle"
+        placeholder="Enter Task..."
+        required
+        #titleInput="ngModel"
+        /><br><br>
+
+        <small  *ngif="titleInput.invalid && titleInput.touched">
+            ⚠️ Task title is required.
+        </small>
+        <button type="submit" [disabled]="titleInput.invalid">Add Task</button>
+    </form>
+</div>
