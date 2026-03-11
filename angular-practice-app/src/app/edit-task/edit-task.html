@@ -1,0 +1,19 @@
+<div>
+    <h2>Edit Task</h2>
+
+    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+    <label>Task Title:</label>
+    <input type="text" name="taskTitle" [(ngModel)]="task.title" required #titleInput="ngModel"/><br>
+
+    <small *ngIf="titleInput.invalid && titleInput.touched"></small><br><br>
+    <label>Completed :</label>
+    <input type="checkbox" name="completed" [(ngModel)]="task.completed"/><br><br>
+
+    <button type="submit" [disabled]="titleInput.invalid">Save Task</button> 
+    </form>
+    <div>
+        <h3>Live Preview:</h3>
+        <p>Task Title: {{ task.title }}</p>
+        <p>Completed: {{ task.completed }}</p>
+    </div>
+    </div>

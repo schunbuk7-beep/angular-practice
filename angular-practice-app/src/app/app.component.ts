@@ -6,12 +6,13 @@ import { TaskCardComponent } from './task-card/task-card.component';
 import { CommonModule } from '@angular/common';
 import { TaskService } from './task.service';
 import { AddTask } from './add-task/add-task';
+import { EditTask } from './edit-task/edit-task';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,HeaderComponent,FooterComponent,TaskCardComponent,AddTask],
+  imports: [RouterOutlet,CommonModule,HeaderComponent,FooterComponent,TaskCardComponent,AddTask,EditTask],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
