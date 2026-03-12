@@ -1,21 +1,25 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NgValidationError, validate } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-add-task',
-  imports: [FormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',
 })
 export class AddTask {
- taskTitle : string = '';
  showAlert : boolean = false;
 
+ taskForm = new FormGroup ({
+   taskTitle: new FormControl('', Validators.required)
+ });
+
  onSubmit() : void {
-  if(this.taskTitle.trim()){
-    console.log('task added:',this.taskTitle);
-    this.taskTitle = '';
+  if(this.taskForm.valid){
+    console.log('task added:',this.taskForm.value);
+    this.taskForm.reset();
     this.showAlert = true;
 
     setTimeout(() =>{
