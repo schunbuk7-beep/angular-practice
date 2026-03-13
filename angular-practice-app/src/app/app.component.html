@@ -5,17 +5,20 @@
 
 <app-task-card
 taskName ="Learn Angular"
-(taskClicked)="onTaskClicked($event)">
+(taskClicked)="onTaskClicked($event)"
+(deleteClicked)="onDeleteTask($event)">
 </app-task-card>
 
 <app-task-card
 taskName = "Building Project"
-(taskClicked)="onTaskClicked($event)">
+(taskClicked)="onTaskClicked($event)"
+(deleteClicked)="onDeleteTask($event)">
 </app-task-card>
 
 <app-task-card
 taskName="Prepare Interview"
-(taskClicked)="onTaskClicked($event)">
+(taskClicked)="onTaskClicked($event)"
+(deleteClicked)="onDeleteTask($event)">
 </app-task-card>
 
 <button (click)="toogleTasks()"> Hide Tasks</button>
@@ -26,7 +29,8 @@ taskName="Prepare Interview"
     *ngFor="let task of tasks; let i = index"
     [taskName]="task"
     [isHighlight]="i === 0"
-    (taskClicked)="onTaskClicked($event)">
+    (taskClicked)="onTaskClicked($event)"
+    (deleteClicked)="onDeleteTask($event)">
 
     </app-task-card>
 

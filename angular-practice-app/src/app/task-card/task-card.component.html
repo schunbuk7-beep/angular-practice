@@ -4,4 +4,6 @@ class ="task-card"
 (click)="onclick()" 
 >
 {{taskName}}
+
+<button (click)="onDelete(); $event.stopPropagation()">Delete</button>
 </div>

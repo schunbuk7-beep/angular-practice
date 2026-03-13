@@ -12,9 +12,20 @@ export class TaskCardComponent {
   @Input() taskName! : string;
   @Input() isHighlight = false;
   @Output() taskClicked = new EventEmitter<string>();
+  @Output() deleteClicked = new EventEmitter<string>();
 
   onclick()
   {
     this.taskClicked.emit(this.taskName);
+  }
+
+  onDelete()
+  {
+    const confirmed = confirm("Are you really you want to delete this Task");
+
+    if(confirmed)
+    {
+      this.deleteClicked.emit(this.taskName);
+    }
   }
 }

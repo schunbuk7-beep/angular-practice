@@ -51,6 +51,10 @@ export class App {
 
       
     }
+
+    onDeleteTask(taskName: string) {
+      this.tasks = this.tasks.filter(task => task !== taskName);
+    }
 }
 
 
