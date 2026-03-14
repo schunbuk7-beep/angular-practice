@@ -36,6 +36,20 @@ taskName="Prepare Interview"
 
 </div>
 
+<input type="text"
+  placeholder="Search tasks..."
+  [(ngModel)]="searchKeyword"/>
+
+<div *ngIf="showTasks">
+  <app-task-card
+    *ngFor="let task of tasks | filter:searchKeyword"
+    [taskName]="task"
+    [isHighlight]="false"
+    (taskClicked)="onTaskClicked($event)"
+    (deleteClicked)="onDeleteTask($event)">
+  </app-task-card>
+</div>
+
 <app-add-task></app-add-task> 
 <app-edit-task></app-edit-task>
 

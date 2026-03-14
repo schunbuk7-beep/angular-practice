@@ -7,12 +7,14 @@ import { CommonModule } from '@angular/common';
 import { TaskService } from './task.service';
 import { AddTask } from './add-task/add-task';
 import { EditTask } from './edit-task/edit-task';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter-pipe';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,HeaderComponent,FooterComponent,TaskCardComponent,AddTask,EditTask],
+  imports: [RouterOutlet,CommonModule,HeaderComponent,FooterComponent,TaskCardComponent,AddTask,EditTask,FormsModule,FilterPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -33,6 +35,7 @@ export class App {
   
   tasks: string[] = [];
   showTasks = true;
+  searchKeyword: string = '';
 
   constructor(private taskService : TaskService)
   {

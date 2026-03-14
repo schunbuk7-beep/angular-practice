@@ -3,7 +3,9 @@ class ="task-card"
 [ngClass]="{highlight: isHighlight}" 
 (click)="onclick()" 
 >
-{{taskName}}
+
+
+{{taskName  | uppercase}}
 
 <button (click)="onDelete(); $event.stopPropagation()">Delete</button>
 </div>
