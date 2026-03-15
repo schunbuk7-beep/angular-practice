@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { HeaderComponent} from './header/header.component';
 import { FooterComponent} from './footer/footer.component';
 import { TaskCardComponent } from './task-card/task-card.component';  
@@ -11,10 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter-pipe';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,HeaderComponent,FooterComponent,TaskCardComponent,AddTask,EditTask,FormsModule,FilterPipe],
+  imports: [RouterOutlet,RouterLink,CommonModule,HeaderComponent,FooterComponent,TaskCardComponent,AddTask,EditTask,FormsModule,FilterPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

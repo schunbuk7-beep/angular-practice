@@ -1,44 +1,15 @@
-<app-header> </app-header>
+<app-header></app-header>
 
 <h1>Welcome to My Task Manager App!</h1>
 <p>Let's start learning Angular</p>
 
-<app-task-card
-taskName ="Learn Angular"
-(taskClicked)="onTaskClicked($event)"
-(deleteClicked)="onDeleteTask($event)">
-</app-task-card>
-
-<app-task-card
-taskName = "Building Project"
-(taskClicked)="onTaskClicked($event)"
-(deleteClicked)="onDeleteTask($event)">
-</app-task-card>
-
-<app-task-card
-taskName="Prepare Interview"
-(taskClicked)="onTaskClicked($event)"
-(deleteClicked)="onDeleteTask($event)">
-</app-task-card>
-
-<button (click)="toogleTasks()"> Hide Tasks</button>
-
-<p *ngIf="tasks.length === 0">No Tasks yet</p>
-<div *ngIf="showTasks">
-    <app-task-card
-    *ngFor="let task of tasks; let i = index"
-    [taskName]="task"
-    [isHighlight]="i === 0"
-    (taskClicked)="onTaskClicked($event)"
-    (deleteClicked)="onDeleteTask($event)">
-
-    </app-task-card>
-
-</div>
+<button (click)="toogleTasks()">Hide Tasks</button>
 
 <input type="text"
   placeholder="Search tasks..."
   [(ngModel)]="searchKeyword"/>
+
+<p *ngIf="tasks.length === 0">No Tasks yet</p>
 
 <div *ngIf="showTasks">
   <app-task-card
@@ -50,7 +21,6 @@ taskName="Prepare Interview"
   </app-task-card>
 </div>
 
-<app-add-task></app-add-task> 
-<app-edit-task></app-edit-task>
+<router-outlet></router-outlet>
 
 <app-footer></app-footer>
