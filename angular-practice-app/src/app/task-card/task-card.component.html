@@ -7,5 +7,14 @@ class ="task-card"
 
 {{taskName  | uppercase}}
 
-<button class="delete-btn" (click)="onDelete(); $event.stopPropagation()">Delete</button>
+ <div class="actions">
+ 
+    <button class="edit-btn" (click)="onEdit(); $event.stopPropagation()">
+      ✏️ Edit
+    </button>
+
+    <button class="delete-btn" (click)="onDelete(); $event.stopPropagation()">
+      🗑️ Delete
+    </button>
+  </div>
 </div>

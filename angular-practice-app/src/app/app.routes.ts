@@ -5,5 +5,5 @@ import { EditTask } from './edit-task/edit-task';
 export const routes: Routes = [
     { path: '', redirectTo:'home', pathMatch:'full'},
     { path: 'add-task', component: AddTask},
-    { path: 'edit-task',component: EditTask},
+    { path: 'edit/:id',component: EditTask},
 ];

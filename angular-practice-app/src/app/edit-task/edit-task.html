@@ -1,19 +1,24 @@
 <div>
-    <h2>Edit Task</h2>
+  <h2>Edit Task</h2>
 
-    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
-    <label>Task Title:</label>
-    <input type="text" name="taskTitle" [(ngModel)]="task.title" required #titleInput="ngModel"/><br>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
-    <small *ngIf="titleInput.invalid && titleInput.touched"></small><br><br>
-    <label>Completed :</label>
-    <input type="checkbox" name="completed" [(ngModel)]="task.completed"/><br><br>
+    <label>Task Title:</label><br>
+    <input
+      type="text"
+      formControlName="title"
+    /><br>
 
-    <button type="submit" [disabled]="titleInput.invalid">Save Task</button> 
-    </form>
-    <div>
-        <h3>Live Preview:</h3>
-        <p>Task Title: {{ task.title }}</p>
-        <p>Completed: {{ task.completed }}</p>
-    </div>
-    </div>
+    <small *ngIf="editForm.get('title')?.invalid && editForm.get('title')?.touched">
+      ⚠️ Task title is required.
+    </small><br><br>
+
+    <button type="submit" [disabled]="editForm.invalid">
+      Save Task
+    </button>
+
+   <button type="button" (click)="onCancel()">Cancel</button>
+   
+
+  </form>
+</div>

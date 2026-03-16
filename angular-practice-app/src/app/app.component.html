@@ -14,7 +14,8 @@
 <div *ngIf="showTasks">
   <app-task-card
     *ngFor="let task of tasks | filter:searchKeyword"
-    [taskName]="task"
+    [taskName]="task.title"
+    [taskId]="task.id"
     [isHighlight]="false"
     (taskClicked)="onTaskClicked($event)"
     (deleteClicked)="onDeleteTask($event)">
