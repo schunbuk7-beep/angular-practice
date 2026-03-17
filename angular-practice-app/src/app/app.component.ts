@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { CommonModule } from '@angular/common';
-import { TaskService, Task } from './task.service';  // 👈 import Task
+import { TaskService, Task } from './task.service';  
 import { AddTask } from './add-task/add-task';
 import { EditTask } from './edit-task/edit-task';
 import { FormsModule } from '@angular/forms';

@@ -38,8 +38,8 @@ export class EditTask implements OnInit {
         id: this.taskId,
         title: this.editForm.value.title!
       };
-      this.taskService.updateTask(updatedTask);   // 👈 updates task in service
-      this.router.navigate(['/']);                // 👈 goes back to home
+      this.taskService.updateTask(updatedTask);   
+      this.router.navigate(['/']);                
     }
   }
 
