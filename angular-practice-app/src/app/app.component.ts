@@ -19,12 +19,13 @@ import { FilterPipe } from './filter-pipe';
 })
 export class App {
 
-  tasks: Task[] = [];        
+         
   showTasks = true;
   searchKeyword: string = '';
 
-  constructor(private taskService: TaskService) {
-    this.tasks = this.taskService.getTasks();
+  constructor(private taskService: TaskService) {}
+  get tasks(): Task[] {
+    return this.taskService.getTasks();
   }
 
   toogleTasks() {
@@ -36,6 +37,6 @@ export class App {
   }
 
   onDeleteTask(taskName: string) {
-    this.tasks = this.tasks.filter(task => task.title !== taskName);  // 👈 task.title
+     this.tasks.filter(task => task.title !== taskName);  
   }
 }
