@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { NgValidationError, validate } from '@angular/forms/signals';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -16,9 +16,12 @@ export class AddTask {
    taskTitle: new FormControl('', Validators.required)
  });
 
+ constructor(private taskService : TaskService) {}
+
  onSubmit() : void {
   if(this.taskForm.valid){
-    console.log('task added:',this.taskForm.value);
+    const title = this.taskForm.value.taskTitle || '';
+    this.taskService.addTask(title);
     this.taskForm.reset();
     this.showAlert = true;
 

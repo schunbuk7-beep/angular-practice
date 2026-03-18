@@ -1,6 +1,7 @@
 import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Router} from '@angular/router';
+import { TaskService  } from '../task.service';
 
 @Component({
   selector: 'app-task-card',
@@ -16,7 +17,9 @@ export class TaskCardComponent {
   @Output() taskClicked = new EventEmitter<string>();
   @Output() deleteClicked = new EventEmitter<string>();
 
-  constructor(private router : Router) {}
+  constructor(private router : Router,
+    private taskService : TaskService
+  ) {}
 
   onclick()
   {
@@ -29,6 +32,7 @@ export class TaskCardComponent {
 
     if(confirmed)
     {
+      this.taskService.deleteTask(this.taskId);
       this.deleteClicked.emit(this.taskName);
     }
   }

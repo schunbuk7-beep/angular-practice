@@ -33,5 +33,19 @@ export class TaskService{
       this.tasks[index] = updatedTask;
     }
   }
+
+  addTask(title : string): void {
+    const newTask: Task = {
+
+      id: this.tasks.length+1,
+      title: title
+
+    };
+    this.tasks.push(newTask);
+  }
+
+  deleteTask(id : number): void{
+     this.tasks = this.tasks.filter(task => task.id !== id);
+  }
 }
   
