@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef} from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,11 +19,16 @@ import { FilterPipe } from './filter-pipe';
 })
 export class App {
 
-         
+  showNotification: boolean = false;
+  notificationMessage: string = '';
+
   showTasks = true;
   searchKeyword: string = '';
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService,
+    private cdr: ChangeDetectorRef
+  ) {}
+ 
   get tasks(): Task[] {
     return this.taskService.getTasks();
   }
@@ -37,6 +42,25 @@ export class App {
   }
 
   onDeleteTask(taskName: string) {
-     this.tasks.filter(task => task.title !== taskName);  
+    this.showMessage('🗑️ Task deleted successfully!');
+  }
+
+
+  //  showMessage(message: string): void {
+  //   this.notificationMessage = message;
+  //   this.showNotification = true;
+  //   setTimeout(() => {
+  //     this.showNotification = false;
+  //   }, 5000);
+  // }
+
+  showMessage(message: string): void {
+    this.notificationMessage = message;
+    this.showNotification = true;
+
+    setTimeout(() => {
+      this.showNotification = false;
+      this.cdr.detectChanges();        // 👈 only here, after setTimeout
+    }, 3000);
   }
 }
