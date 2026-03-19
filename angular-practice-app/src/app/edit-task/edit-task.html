@@ -19,6 +19,15 @@
 
    <button type="button" (click)="onCancel()">Cancel</button>
    
-
+<div *ngIf = "showNotification" style = "
+background: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;">
+   ✏️ Task updated successfully!
+</div>
   </form>
 </div>

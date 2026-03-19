@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ChangeDetectorRef} from '@angular/core';
 import { ReactiveFormsModule,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../task.service';
@@ -16,7 +16,9 @@ export class AddTask {
    taskTitle: new FormControl('', Validators.required)
  });
 
- constructor(private taskService : TaskService) {}
+ constructor(private taskService : TaskService,
+  private dtr: ChangeDetectorRef
+ ) {}
 
  onSubmit() : void {
   if(this.taskForm.valid){
@@ -27,6 +29,7 @@ export class AddTask {
 
     setTimeout(() =>{
       this.showAlert = false;
+      this.dtr.detectChanges();
     },3000)
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { TaskService,Task } from '../task.service';
   styleUrl: './edit-task.css',
 })
 export class EditTask implements OnInit {
+    showNotification:  boolean = false;
       editForm = new FormGroup({
         title: new FormControl('',Validators.required)
       });
@@ -20,7 +21,8 @@ export class EditTask implements OnInit {
       constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private taskService: TaskService
+        private taskService: TaskService,
+        private cdr: ChangeDetectorRef
       ) {}
 
       ngOnInit(): void {
@@ -39,7 +41,13 @@ export class EditTask implements OnInit {
         title: this.editForm.value.title!
       };
       this.taskService.updateTask(updatedTask);   
-      this.router.navigate(['/']);                
+      
+      this.showNotification = true;
+      setTimeout(() => {
+        this.showNotification = false;
+        this.cdr.detectChanges();
+        this.router.navigate(['/']);
+      }, 2000);
     }
   }
 
