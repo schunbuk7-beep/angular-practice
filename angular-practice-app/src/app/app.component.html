@@ -1,38 +1,35 @@
 <app-header></app-header>
 
-<div *ngIf = "showNotification" style="
-background: #d4edda;
-  color: #155724;
-  padding: 12px 20px;
-  margin: 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-align: center;">
-{{ notificationMessage }}  
+<div class="container">
+
+  <div *ngIf="showNotification" class="notification">
+    {{ notificationMessage }}  
+  </div>
+
+  <h1>Welcome to My Task Manager App!</h1>
+  <p>Let's start learning Angular</p>
+
+  <button class="hide-btn" (click)="toogleTasks()">Hide Tasks</button>
+
+  <input type="text"
+    placeholder="Search tasks..."
+    [(ngModel)]="searchKeyword"/>
+
+  <p *ngIf="tasks.length === 0">No Tasks yet</p>
+
+  <div *ngIf="showTasks">
+    <app-task-card
+      *ngFor="let task of tasks | filter:searchKeyword"
+      [taskName]="task.title"
+      [taskId]="task.id"
+      [isHighlight]="false"
+      (taskClicked)="onTaskClicked($event)"
+      (deleteClicked)="onDeleteTask($event)">
+    </app-task-card>
+  </div>
+
+  <router-outlet></router-outlet>  <!-- 👈 back inside container -->
+
 </div>
-
-<h1>Welcome to My Task Manager App!</h1>
-<p>Let's start learning Angular</p>
-
-<button (click)="toogleTasks()">Hide Tasks</button>
-
-<input type="text"
-  placeholder="Search tasks..."
-  [(ngModel)]="searchKeyword"/>
-
-<p *ngIf="tasks.length === 0">No Tasks yet</p>
-
-<div *ngIf="showTasks">
-  <app-task-card
-    *ngFor="let task of tasks | filter:searchKeyword"
-    [taskName]="task.title"
-    [taskId]="task.id"
-    [isHighlight]="false"
-    (taskClicked)="onTaskClicked($event)"
-    (deleteClicked)="onDeleteTask($event)">
-  </app-task-card>
-</div>
-
-<router-outlet></router-outlet>
 
 <app-footer></app-footer>
