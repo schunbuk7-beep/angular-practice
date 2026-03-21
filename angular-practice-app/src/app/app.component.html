@@ -9,7 +9,9 @@
   <h1>Welcome to My Task Manager App!</h1>
   <p>Let's start learning Angular</p>
 
-  <button class="hide-btn" (click)="toogleTasks()">Hide Tasks</button>
+  <button class="hide-btn" (click)="toogleTasks()">
+     {{ showTasks ? '🔓 Hide Tasks' : '🔒 Show Tasks' }}
+  </button>
 
   <input type="text"
     placeholder="Search tasks..."
