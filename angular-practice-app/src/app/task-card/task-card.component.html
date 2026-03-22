@@ -5,7 +5,15 @@ class ="task-card"
 >
 
 
-<span class="task-name">{{ taskName | uppercase }}</span>
+ <input
+    type="checkbox"
+    [checked]="completed"
+    (click)="onToggleCompleted(); $event.stopPropagation()"
+  />
+
+  <span class="task-name" [ngClass]="{strikethrough: completed}">
+    {{ taskName | uppercase }}
+  </span>
 
  <div class="actions">
  

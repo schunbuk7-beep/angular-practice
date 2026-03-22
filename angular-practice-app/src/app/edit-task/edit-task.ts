@@ -36,9 +36,11 @@ export class EditTask implements OnInit {
 
     onSubmit(): void {
     if (this.editForm.valid) {
+      const existingTask = this.taskService.getTaskById(this.taskId);
       const updatedTask: Task = {
         id: this.taskId,
-        title: this.editForm.value.title!
+        title: this.editForm.value.title!,
+        completed: existingTask?.completed || false
       };
       this.taskService.updateTask(updatedTask);   
       

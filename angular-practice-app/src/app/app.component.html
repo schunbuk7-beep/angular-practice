@@ -19,6 +19,13 @@
 
   <p *ngIf="tasks.length === 0">No Tasks yet</p>
 
+
+<div class="counter">
+  <span>📋 Total: {{ tasks.length }}</span>
+  <span>✅ Completed: {{ completedCount }}</span>
+  <span>⏳ Pending: {{ pendingCount }}</span>
+</div>
+
   <div *ngIf="showTasks">
     <app-task-card
       *ngFor="let task of tasks | filter:searchKeyword"

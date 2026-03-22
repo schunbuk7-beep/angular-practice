@@ -1,6 +1,6 @@
-import { Component,Input,Output,EventEmitter } from '@angular/core';
+import { Component,Input,Output,EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import { TaskService  } from '../task.service';
 
 @Component({
@@ -14,11 +14,13 @@ export class TaskCardComponent {
   @Input() taskName! : string;
   @Input() taskId! : number;
   @Input() isHighlight = false;
+  @Input() completed = false;
   @Output() taskClicked = new EventEmitter<string>();
   @Output() deleteClicked = new EventEmitter<string>();
 
   constructor(private router : Router,
-    private taskService : TaskService
+    private taskService : TaskService,
+    private cdtr : ChangeDetectorRef
   ) {}
 
   onclick()
@@ -40,5 +42,12 @@ export class TaskCardComponent {
   onEdit()
   {
     this.router.navigate(['/edit',this.taskId]);
+  }
+
+  onToggleCompleted()
+  {
+    this.taskService.toggleComplete(this.taskId);
+    this.completed = !this.completed;
+    this.cdtr.detectChanges();
   }
 }

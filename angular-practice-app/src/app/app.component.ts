@@ -45,15 +45,6 @@ export class App {
     this.showMessage('🗑️ Task deleted successfully!');
   }
 
-
-  //  showMessage(message: string): void {
-  //   this.notificationMessage = message;
-  //   this.showNotification = true;
-  //   setTimeout(() => {
-  //     this.showNotification = false;
-  //   }, 5000);
-  // }
-
   showMessage(message: string): void {
     this.notificationMessage = message;
     this.showNotification = true;
@@ -62,5 +53,13 @@ export class App {
       this.showNotification = false;
       this.cdr.detectChanges();        // 👈 only here, after setTimeout
     }, 3000);
+  }
+
+  get completedCount(): number {
+      return this.tasks.filter(task => task.completed).length;
+  }
+
+  get pendingCount(): number {
+    return this.tasks.filter(task => !task.completed).length;
   }
 }

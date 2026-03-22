@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 export interface Task{
   id : number;
   title : string;
+  completed: boolean;
 }
 
 @Injectable({
@@ -11,9 +12,9 @@ export interface Task{
 
 export class TaskService{
   tasks: Task[]=[
-    {id: 1, title : 'Learn Angular'},
-    {id: 2, title : 'Built Project'},
-    {id: 3, title : 'Prepare Interview'}
+    {id: 1, title : 'Learn Angular', completed : false},
+    {id: 2, title : 'Built Project', completed : false},
+    {id: 3, title : 'Prepare Interview', completed : false}
   ];
 
   getTasks(){
@@ -38,7 +39,8 @@ export class TaskService{
     const newTask: Task = {
 
       id: this.tasks.length+1,
-      title: title
+      title: title,
+      completed: false
 
     };
     this.tasks.push(newTask);
@@ -46,6 +48,15 @@ export class TaskService{
 
   deleteTask(id : number): void{
      this.tasks = this.tasks.filter(task => task.id !== id);
+  }
+
+  toggleComplete(id : number):void{
+    const task = this.tasks.find(task => task.id === id);
+    
+    if(task)
+    {
+      task.completed = !task.completed; 
+    }
   }
 }
   
