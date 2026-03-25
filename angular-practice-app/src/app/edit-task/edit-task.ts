@@ -49,7 +49,7 @@ export class EditTask implements OnInit {
         this.showNotification = false;
         this.cdr.detectChanges();
         this.router.navigate(['/']);
-      }, 2000);
+      }, 50000);
     }
   }
 

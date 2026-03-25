@@ -68,3 +68,22 @@ button[type="submit"]:disabled {
   display: flex;
   gap: 10px; /* space between buttons */
 }
+
+button[type="button"] {
+  background-color: transparent;
+  color: #9ca3af;
+  border: 1px solid #444444;    
+
+
+
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button[type="button"]:hover {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border-color: #444444;
+}

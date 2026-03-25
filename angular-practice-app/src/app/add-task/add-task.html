@@ -3,15 +3,17 @@
 
   <!-- ✅ only one notification div -->
   <div *ngIf="showAlert" style="
-    background: linear-gradient(135deg, #065f46, #047857);
-    color: #d1fae5;
-    padding: 12px 20px;
-    margin-bottom: 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;">
-    ✅ Task added successfully!
-  </div>
+  background: linear-gradient(135deg, #1a0533, #2d1b69);
+  color: #a78bfa;
+  border: 1px solid #7c3aed;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;">
+  ✅ Task added successfully!
+</div>
 
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
 
