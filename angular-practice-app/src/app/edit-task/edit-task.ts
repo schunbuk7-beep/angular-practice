@@ -2,7 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TaskService,Task } from '../task.service';
+import { TaskService } from '../services/task.service';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-edit-task',

@@ -1,7 +1,7 @@
 import { Component , ChangeDetectorRef} from '@angular/core';
 import { ReactiveFormsModule,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TaskService } from '../task.service';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-add-task',

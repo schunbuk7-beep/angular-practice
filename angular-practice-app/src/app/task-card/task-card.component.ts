@@ -1,7 +1,7 @@
 import { Component,Input,Output,EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router} from '@angular/router';
-import { TaskService  } from '../task.service';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-task-card',
