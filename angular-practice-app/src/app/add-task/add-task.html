@@ -15,7 +15,7 @@
   ✅ Task added successfully!
 </div>
 
-  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="taskForm" >
 
     <label>Task Title:</label><br>
     <input
@@ -27,9 +27,15 @@
       ⚠️ Task title is required.
     </small><br><br>
 
-    <button type="submit" [disabled]="taskForm.invalid">
+    <!-- <button type="submit" [disabled]="taskForm.invalid">
       Add Task
-    </button>
+    </button> -->
+    <app-button
+  text="Add Task"
+  type="primary"
+  [disabled]="taskForm.invalid"
+  (clicked)="onSubmit()">
+</app-button>
 
   </form>
 </div>

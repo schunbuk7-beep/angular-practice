@@ -2,10 +2,11 @@ import { Component , ChangeDetectorRef} from '@angular/core';
 import { ReactiveFormsModule,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../services/task.service';
+import { Button } from '../shared/button/button';
 
 @Component({
   selector: 'app-add-task',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,Button],
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',
 })

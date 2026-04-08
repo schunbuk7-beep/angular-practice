@@ -1,7 +1,7 @@
 <div>
   <h2>Edit Task</h2>
 
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="editForm" >
 
     <label>Task Title:</label><br>
     <input
@@ -14,13 +14,26 @@
     </small><br><br>
 
  <div class="btn-group">
-  <button type="submit" [disabled]="editForm.invalid">
+  <!-- <button type="submit" [disabled]="editForm.invalid">
     Save Task
   </button>
 
   <button type="button" (click)="onCancel()">
     Cancel
-  </button>
+  </button> -->
+  <!-- ✅ replace with these -->
+<app-button
+  text="Save Task"
+  type="primary"
+  [disabled]="editForm.invalid"
+  (clicked)="onSubmit()">
+</app-button>
+
+<app-button
+  text="Cancel"
+  type="secondary"
+  (clicked)="onCancel()">
+</app-button>
 </div>
 <div *ngIf="showNotification" style="
   background: linear-gradient(135deg, #1a0533, #2d1b69);

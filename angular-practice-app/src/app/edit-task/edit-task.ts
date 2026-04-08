@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
-
+import { Button } from '../shared/button/button';
 @Component({
   selector: 'app-edit-task',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,Button],
   templateUrl: './edit-task.html',
   styleUrl: './edit-task.css',
 })
