@@ -25,10 +25,22 @@ export class App {
 
   showTasks = true;
   searchKeyword: string = '';
+  isLoading: boolean = true;
 
   constructor(private taskService: TaskService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) {
+    this.LoadTask();
+  }
+
+  LoadTask()
+  {
+    this.isLoading=true;
+    setTimeout(() =>{
+       this.isLoading=false;
+    this.cdr.detectChanges();
+    },1500);
+  }
  
   get tasks(): Task[] {
     return this.taskService.getTasks();

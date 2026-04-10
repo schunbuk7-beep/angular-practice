@@ -71,3 +71,19 @@ input {
   font-size: 14px;
   font-weight: 500;
 }
+
+.loader{
+  text-align:center;
+  padding: 40px;
+  color: #a78bfa;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%  { opacity : 1; }
+  50% { opacity : 0.3; }
+  100% { opacity : 1;}
+}

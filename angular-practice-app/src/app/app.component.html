@@ -17,28 +17,33 @@
     placeholder="Search tasks..."
     [(ngModel)]="searchKeyword"/>
 
-  <p *ngIf="tasks.length === 0">No Tasks yet</p>
+    <div *ngIf="isLoading" class="loader">
+        ⏳ Loading tasks...
+    </div>
 
 
+
+<div *ngIf="!isLoading">
 <div class="counter">
   <span>📋 Total: {{ tasks.length }}</span>
   <span>✅ Completed: {{ completedCount }}</span>
   <span>⏳ Pending: {{ pendingCount }}</span>
 </div>
 
+
   <div *ngIf="showTasks">
     <app-task-card
       *ngFor="let task of tasks | filter:searchKeyword"
       [taskName]="task.title"
       [taskId]="task.id"
+      [completed]="task.completed"
       [isHighlight]="false"
       (taskClicked)="onTaskClicked($event)"
       (deleteClicked)="onDeleteTask($event)">
     </app-task-card>
   </div>
-
-  <router-outlet></router-outlet>  <!-- 👈 back inside container -->
-
+</div>
 </div>
 
+<router-outlet></router-outlet> 
 <app-footer></app-footer>
