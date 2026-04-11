@@ -10,39 +10,51 @@
   <p>Let's start learning Angular</p>
 
   <button class="hide-btn" (click)="toogleTasks()">
-     {{ showTasks ? '🔓 Hide Tasks' : '🔒 Show Tasks' }}
+    {{ showTasks ? '🔓 Hide Tasks' : '🔒 Show Tasks' }}
   </button>
 
   <input type="text"
     placeholder="Search tasks..."
     [(ngModel)]="searchKeyword"/>
 
-    <div *ngIf="isLoading" class="loader">
-        ⏳ Loading tasks...
+  <!-- loading state -->
+  <div *ngIf="isLoading" class="loader">
+    ⏳ Loading tasks...
+  </div>
+
+  <!-- error state -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+    <app-button
+      text="🔄 Retry"
+      type="primary"
+      (clicked)="retryLoading()">
+    </app-button>
+  </div>
+
+  <!-- tasks - only show when not loading AND no error -->
+  <div *ngIf="!isLoading && !errorMessage">
+    <div class="counter">
+      <span>📋 Total: {{ tasks.length }}</span>
+      <span>✅ Completed: {{ completedCount }}</span>
+      <span>⏳ Pending: {{ pendingCount }}</span>
     </div>
 
+    <p *ngIf="tasks.length === 0">No Tasks Yet</p>
 
-
-<div *ngIf="!isLoading">
-<div class="counter">
-  <span>📋 Total: {{ tasks.length }}</span>
-  <span>✅ Completed: {{ completedCount }}</span>
-  <span>⏳ Pending: {{ pendingCount }}</span>
-</div>
-
-
-  <div *ngIf="showTasks">
-    <app-task-card
-      *ngFor="let task of tasks | filter:searchKeyword"
-      [taskName]="task.title"
-      [taskId]="task.id"
-      [completed]="task.completed"
-      [isHighlight]="false"
-      (taskClicked)="onTaskClicked($event)"
-      (deleteClicked)="onDeleteTask($event)">
-    </app-task-card>
+    <div *ngIf="showTasks">
+      <app-task-card
+        *ngFor="let task of tasks | filter:searchKeyword"
+        [taskName]="task.title"
+        [taskId]="task.id"
+        [completed]="task.completed"
+        [isHighlight]="false"
+        (taskClicked)="onTaskClicked($event)"
+        (deleteClicked)="onDeleteTask($event)">
+      </app-task-card>
+    </div>
   </div>
-</div>
+
 </div>
 
 <router-outlet></router-outlet> 

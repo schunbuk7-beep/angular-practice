@@ -87,3 +87,20 @@ input {
   50% { opacity : 0.3; }
   100% { opacity : 1;}
 }
+
+
+.error-message{
+  text-align: center;
+  padding: 40px;
+  border: 1px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.05);
+  margin-bottom: 24px;
+}
+
+.error-message p {
+  color: #ef4444;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}

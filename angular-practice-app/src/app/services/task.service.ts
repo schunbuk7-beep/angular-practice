@@ -13,6 +13,10 @@ export class TaskService{
   ];
 
   getTasks(){
+    if(Math.random() > 0.5)
+    {
+      throw new Error("Failed to Load Task");
+    }
     return this.tasks;
   }
 

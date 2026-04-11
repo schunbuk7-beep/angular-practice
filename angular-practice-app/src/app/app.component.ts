@@ -10,11 +10,12 @@ import { AddTask } from './add-task/add-task';
 import { EditTask } from './edit-task/edit-task';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './services/filter-pipe';
+import { Button } from './shared/button/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule, HeaderComponent, FooterComponent, TaskCardComponent, AddTask, EditTask, FormsModule, FilterPipe],
+  imports: [RouterOutlet, RouterLink, CommonModule, HeaderComponent, FooterComponent, TaskCardComponent, AddTask, EditTask, FormsModule, FilterPipe,Button],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -26,6 +27,7 @@ export class App {
   showTasks = true;
   searchKeyword: string = '';
   isLoading: boolean = true;
+  errorMessage: string = '';
 
   constructor(private taskService: TaskService,
     private cdr: ChangeDetectorRef
@@ -36,12 +38,25 @@ export class App {
   LoadTask()
   {
     this.isLoading=true;
+    this.errorMessage = '';
     setTimeout(() =>{
-       this.isLoading=false;
+      try{
+        this.taskService.getTasks();
+        this.isLoading=false;
+      }
+      catch(error)
+      {
+              this.isLoading=false;
+              this.errorMessage = '❌ Failed to load tasks. Please try again.';
+      }
+
     this.cdr.detectChanges();
     },1500);
   }
  
+  retryLoading():void{
+    this.LoadTask();
+  }
   get tasks(): Task[] {
     return this.taskService.getTasks();
   }
